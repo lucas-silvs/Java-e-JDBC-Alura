@@ -7,8 +7,8 @@ public class TestaListagem {
     public static void main(String[] args) throws SQLException {
 
         Connection connection = ConnectionFactory.executar();
-        Statement statement = connection.createStatement();
-        Boolean resultados = statement.execute("SELECT * FROM PRODUTO;");
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM PRODUTO");
+        Boolean resultados = statement.execute();
         System.out.println(resultados);
         ResultSet rst = statement.getResultSet();
 

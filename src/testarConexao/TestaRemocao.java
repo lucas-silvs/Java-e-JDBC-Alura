@@ -1,20 +1,17 @@
 package testarConexao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class TestaRemocao {
 
     public static void main(String[] args) throws SQLException {
         Connection connection = ConnectionFactory.executar();
 
-        Statement statement = connection.createStatement();
-        statement.execute("DELETE FROM PRODUTO WHERE ID > 2");
+        PreparedStatement statement = connection.prepareStatement("DELETE FROM PRODUTO WHERE ID > ?");
+        statement.setString(1,"2");
+        statement.execute();
 
         Integer linhasModificadas = statement.getUpdateCount();
-        ;
         System.out.println("linhas modificadas: " + linhasModificadas);
 
 
