@@ -5,8 +5,9 @@ import java.sql.*;
 public class TestaListagem {
 
     public static void main(String[] args) throws SQLException {
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = connectionFactory.executar();
 
-        Connection connection = ConnectionFactory.executar();
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM PRODUTO");
         Boolean resultados = statement.execute();
         System.out.println(resultados);

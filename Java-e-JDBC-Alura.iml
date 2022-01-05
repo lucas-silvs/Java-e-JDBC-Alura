@@ -16,5 +16,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="mchange-commons-java-0.2.16" level="project" />
+    <orderEntry type="library" exported="" name="c3p0-0.9.5.4" level="project" />
   </component>
 </module>
