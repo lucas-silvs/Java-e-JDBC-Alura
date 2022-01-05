@@ -1,4 +1,4 @@
-package testarConexao;
+package br.com.alura.jdbc.testarConexao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -6,7 +6,8 @@ import java.sql.SQLException;
 
 public class TestarConexao {
     public static void main(String[] args) throws SQLException {
-        Connection connection = ConnectionFactory.executar();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = connectionFactory.executar();
 
         connection.close();
         System.out.println("conexão fechada");

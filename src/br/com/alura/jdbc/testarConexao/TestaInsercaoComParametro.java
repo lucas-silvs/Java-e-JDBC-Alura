@@ -1,4 +1,4 @@
-package testarConexao;
+package br.com.alura.jdbc.testarConexao;
 
 import java.sql.*;
 
@@ -9,8 +9,8 @@ public class TestaInsercaoComParametro {
         String nome = "sopa";
         String descricao = "de carangueijo'";
         String sql = "INSERT INTO PRODUTO (nome, descricao) VALUES ('"+nome+"', '"+descricao+"')";
-
-        try(Connection connection = ConnectionFactory.executar();) {
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        try(Connection connection = connectionFactory.executar();) {
             connection.setAutoCommit(false);
             //try with resources: isso garante que ao final do try, a conexão com o banco será fechada
             try (

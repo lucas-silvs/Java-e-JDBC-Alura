@@ -1,4 +1,4 @@
-package testarConexao;
+package br.com.alura.jdbc.testarConexao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,7 +7,8 @@ import java.sql.Statement;
 
 public class TestaInsercao {
     public static void main(String[] args) throws SQLException {
-        Connection connection = ConnectionFactory.executar();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = connectionFactory.executar();
 
         Statement statement = connection.createStatement();
         statement.execute("INSERT INTO PRODUTO (nome, descricao) VALUES ('Mouse', 'Mouse Wireless')"

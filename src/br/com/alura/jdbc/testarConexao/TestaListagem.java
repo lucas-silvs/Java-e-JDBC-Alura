@@ -1,12 +1,16 @@
-package testarConexao;
+package br.com.alura.jdbc.testarConexao;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class TestaListagem {
 
     public static void main(String[] args) throws SQLException {
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = connectionFactory.executar();
 
-        Connection connection = ConnectionFactory.executar();
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM PRODUTO");
         Boolean resultados = statement.execute();
         System.out.println(resultados);
