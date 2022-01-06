@@ -1,5 +1,7 @@
-package br.com.alura.jdbc.testarConexao;
+package br.com.alura.jdbc.testarconexao;
 
+import dao.ProdutoDAO;
+import factory.ConnectionFactory;
 import modelo.Produto;
 
 import java.sql.Connection;

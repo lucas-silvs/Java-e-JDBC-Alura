@@ -1,4 +1,4 @@
-package br.com.alura.jdbc.testarConexao;
+package factory;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-    public DataSource dataSource;
+    private DataSource dataSource;
 
     public ConnectionFactory() {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();

@@ -1,5 +1,6 @@
-package br.com.alura.jdbc.testarConexao;
+package dao;
 
+import modelo.Categoria;
 import modelo.Produto;
 
 import java.sql.*;
@@ -58,4 +59,26 @@ public class ProdutoDAO {
         }
         return  listaProduto;
     }
+
+    public ArrayList<Produto> buscarporCategoria(Categoria categoria) throws SQLException {
+        ArrayList<Produto> listaProduto = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement("SELECT ID, NOME, DESCRICAO FROM PRODUTO WHERE CATEGORIA_ID = ?")) {
+            statement.setInt(1,categoria.getId());
+            statement.execute();
+            ResultSet rst = statement.getResultSet();
+
+            while (rst.next()) {
+                Integer id = rst.getInt("ID");
+                String nome = rst.getNString("NOME");
+                String descricao = rst.getNString("DESCRICAO");
+                Produto produto = new Produto(id, nome, descricao);
+                produto.setId(id);
+                listaProduto.add(produto);
+
+            }
+
+        }
+        return listaProduto;
+    }
+
 }

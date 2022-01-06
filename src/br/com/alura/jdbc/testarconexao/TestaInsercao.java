@@ -1,4 +1,6 @@
-package br.com.alura.jdbc.testarConexao;
+package br.com.alura.jdbc.testarconexao;
+
+import factory.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,14 +13,13 @@ public class TestaInsercao {
         Connection connection = connectionFactory.executar();
 
         Statement statement = connection.createStatement();
-        statement.execute("INSERT INTO PRODUTO (nome, descricao) VALUES ('Mouse', 'Mouse Wireless')"
-        ,Statement.RETURN_GENERATED_KEYS);
+        statement.execute("INSERT INTO PRODUTO (nome, descricao) VALUES ('Mouse', 'Mouse Wireless')", Statement.RETURN_GENERATED_KEYS);
         ResultSet rst = statement.getGeneratedKeys();
 
-        while (rst.next()){
+        while (rst.next()) {
             Integer id = rst.getInt(1);
 
-            System.out.println("O id criado foi o: "+id);
+            System.out.println("O id criado foi o: " + id);
 
 
         }

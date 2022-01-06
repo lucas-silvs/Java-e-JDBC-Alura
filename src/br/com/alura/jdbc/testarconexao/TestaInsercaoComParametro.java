@@ -1,4 +1,6 @@
-package br.com.alura.jdbc.testarConexao;
+package br.com.alura.jdbc.testarconexao;
+
+import factory.ConnectionFactory;
 
 import java.sql.*;
 
@@ -8,9 +10,9 @@ public class TestaInsercaoComParametro {
 
         String nome = "sopa";
         String descricao = "de carangueijo'";
-        String sql = "INSERT INTO PRODUTO (nome, descricao) VALUES ('"+nome+"', '"+descricao+"')";
+        String sql = "INSERT INTO PRODUTO (nome, descricao) VALUES ('" + nome + "', '" + descricao + "')";
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        try(Connection connection = connectionFactory.executar();) {
+        try (Connection connection = connectionFactory.executar();) {
             connection.setAutoCommit(false);
             //try with resources: isso garante que ao final do try, a conexão com o banco será fechada
             try (
@@ -32,7 +34,7 @@ public class TestaInsercaoComParametro {
     }
 
     private static void adicionarVariavel(String nome, String descricao, PreparedStatement statement) throws SQLException {
-        if(nome.equals("error") || descricao.equals("error")){
+        if (nome.equals("error") || descricao.equals("error")) {
             throw new RuntimeException("Não possivel adicionar o produto");
         }
 
@@ -40,7 +42,7 @@ public class TestaInsercaoComParametro {
         statement.setString(2, descricao);
 
         statement.execute();
-        try(ResultSet rst = statement.getGeneratedKeys();) {
+        try (ResultSet rst = statement.getGeneratedKeys();) {
 
             while (rst.next()) {
                 Integer id = rst.getInt(1);

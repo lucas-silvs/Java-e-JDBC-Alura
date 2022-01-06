@@ -1,4 +1,6 @@
-package br.com.alura.jdbc.testarConexao;
+package br.com.alura.jdbc.testarconexao;
+
+import factory.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
